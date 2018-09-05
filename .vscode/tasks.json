@@ -7,7 +7,17 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/AvaloniaTest.csproj"
+                "${workspaceFolder}/avaloniaPackageTester/avaloniaPackageTester.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/avaloniaPackageTester/avaloniaPackageTester.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
