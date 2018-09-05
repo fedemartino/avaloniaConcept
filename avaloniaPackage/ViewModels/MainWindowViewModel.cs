@@ -9,24 +9,18 @@ namespace AvaloniaTest.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public string Greeting
-        {
-            get
-            {
-                return "Hello World!";
-            }
-        }
+        public static MainWindowViewModel Instance { get; private set; }
 
         public MainWindowViewModel()
         {
-            DoTheThing = ReactiveCommand.Create(RunTheThing);
+            Debug.Print("En el constructor de MainWindowViewModel");
+            Instance = this;
         }
 
-        public ReactiveCommand<Unit, Unit> DoTheThing { get; }
-
-        void RunTheThing()
+        public void RunTheThing(ButtonT b)
         {
-            Debug.Print("Hello from run the thing!");
+            Debug.Print("Hello from Button Number: " + b.Name + "\n");
+            b.ButtonPressed();
         }
     }
 }
