@@ -18,8 +18,6 @@ namespace AvaloniaTest.Views
     {
         public static void Build(MainWindow window)
         {
-            List<ButtonT> listaBotones = new List<ButtonT>();
-
             // maxRow y maxCol deberían estar definidas en el ViewModel...
             int maxRow = 9;
             int maxCol = 5;
@@ -40,8 +38,6 @@ namespace AvaloniaTest.Views
                 for (int col = 0; col < maxCol; col++)
                 {
                     ButtonT b = new ButtonT("Boton Nro: " + i.ToString(), i);
-                    // TODO: revisar si es neceseario agregar los botones a eta lista...
-                    listaBotones.Add(b);
                     var stackPanel = new Avalonia.Controls.StackPanel();
                     var textBlock = new Avalonia.Controls.TextBlock
                     {
