@@ -9,6 +9,8 @@ namespace AvaloniaTest.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        public static MainWindowViewModel Instance { get; private set; }
+
         public string Greeting
         {
             get
@@ -19,14 +21,21 @@ namespace AvaloniaTest.ViewModels
 
         public MainWindowViewModel()
         {
-            DoTheThing = ReactiveCommand.Create(RunTheThing);
+            Debug.Print("En el constructor de MainWindowViewModel");
+            Instance = this;
+            // DoTheThing = ReactiveCommand.Create(RunTheThing);
         }
 
-        public ReactiveCommand<Unit, Unit> DoTheThing { get; }
+        // public ReactiveCommand<Unit, Unit> DoTheThing { get; }
 
-        void RunTheThing()
+        // public void RunTheThing()
+        // {
+        //     Debug.Print("Hello from run the thing!");
+        // }
+        public void RunTheThing(ButtonT b)
         {
-            Debug.Print("Hello from run the thing!");
+            Debug.Print("Hello from Button Number: " + b.Name + "\n");
+            b.ButtonPressed();
         }
     }
 }

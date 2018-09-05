@@ -34,55 +34,13 @@ namespace AvaloniaTest.Views
         }
         private void InitializeComponent()
         {
-            int maxRow = 9;
-            int maxCol = 5;
             AvaloniaXamlLoader.Load(this);
-            int i = 0;
-            var grdMain = this.FindControl<Grid>("grdMain");
-            for (int row = 0; row < maxRow; row++){
-                grdMain.RowDefinitions.Add(new RowDefinition{
-                    Height = GridLength.Parse("*",CultureInfo.InstalledUICulture)
-                });
-            }
-            for (int col = 0; col < maxCol; col++){
-                grdMain.ColumnDefinitions.Add(new ColumnDefinition{
-                    Width =  GridLength.Parse("1*",CultureInfo.InstalledUICulture)
-                });
-            }
-            for (int row = 0; row < maxRow; row++)
-            {
-                for (int col = 0; col < maxCol; col++)
-                {
-                    ButtonT b = new ButtonT("Boton Nro: " + i.ToString(), i);
-                    listaBotones.Add(b);
-                    var stackPanel = new Avalonia.Controls.StackPanel();
-                    var textBlock = new Avalonia.Controls.TextBlock
-                    {
-                        [!TextBlock.TextProperty] = new Binding("Name")
-                    };
-                    stackPanel.Children.Add(textBlock);
-                    var btn = new Avalonia.Controls.Button
-                    {
-                        Background = b.ButtonColor,
-                        [!Button.BackgroundProperty] = b.ToBinding<SolidColorBrush>(),
-                        [Grid.RowProperty] = row,
-                        [Grid.ColumnProperty] = col,
-                        Command = ReactiveCommand.Create<ButtonT>(RunTheThing),
-                        CommandParameter = b,
-                        Content = stackPanel,
-                        DataContext = b
-                    };
-                    
-                    i++;
-                    grdMain.Children.Add(btn);
-                }
-            }
+            MainWindowBuilder.Build(this);
         }
-        List<ButtonT> listaBotones = new List<ButtonT>();
-        void RunTheThing(ButtonT b)
-        {
-            Debug.Print("Hello from Button Number: " + b.Name + "\n");
-            b.ButtonPressed();
-        }
+        // void RunTheThing(ButtonT b)
+        // {
+        //     Debug.Print("Hello from Button Number: " + b.Name + "\n");
+        //     b.ButtonPressed();
+        // }
     }
 }

@@ -7,7 +7,8 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/AvaloniaTest.csproj"
+                "${workspaceFolder}/AvaloniaTest.csproj",
+                "/p:GenerateFullPaths=true"
             ],
             "problemMatcher": "$msCompile"
         }
