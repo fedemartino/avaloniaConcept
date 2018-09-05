@@ -60,9 +60,6 @@ namespace AvaloniaTest.Views
                         Content = stackPanel,
                         DataContext = b
                     };
-                    var btn2 = new Avalonia.Controls.Button();
-                    btn2.Background = b.ButtonColor;
-                    btn2.[!Button.BackgroundProperty] = b.ToBinding<SolidColorBrush>();
 
                     i++;
                     grdMain.Children.Add(btn);
